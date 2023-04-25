@@ -256,19 +256,22 @@ for node in nodes:
 path = astar(start, end)
 
 # 画出图形
-fig, ax = plt.subplots(figsize=(20, 8), dpi=500)
+fig, ax = plt.subplots(figsize=(20, 8), dpi=300)
 for node in nodes:
-    ax.plot(node.x, node.y, color="black", marker='.')
+    ax.plot(node.x, node.y, color="slategray", marker='.')
+
+ax.plot(start.x, start.y, color="deepskyblue", marker='.')
+ax.plot(end.x, end.y, color="deepskyblue", marker='.')
 
 for node in nodes:
-    ax.text(node.x, node.y, node.id, ha='center', va='bottom', color='green', size='5')
+    ax.text(node.x, node.y, node.id, ha='left', va='bottom', color='steelblue', size='4')
     for neighbor in node.neighbors:
-        ax.plot([node.x, neighbor.x], [node.y, neighbor.y], color="black")
+        ax.plot([node.x, neighbor.x], [node.y, neighbor.y], color="slategray")
 
 for i in range(len(path) - 1):
-    ax.plot([path[i].x, path[i + 1].x], [path[i].y, path[i + 1].y], color="blue")
+    ax.plot([path[i].x, path[i + 1].x], [path[i].y, path[i + 1].y], color="deepskyblue")
 
-ax.set_xlim(left=-1, right=2000)
+ax.set_xlim(left=-1, right=1800)
 ax.set_ylim(bottom=500, top=1000)
 ax.invert_yaxis()
 plt.show()
